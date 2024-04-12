@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import './GridDisplay.css'; // Import CSS file for styling
 
 const GridDisplay = () => {
     const [selectedHall, setSelectedHall] = useState('FLT');
     const [selectedPattern, setSelectedPattern] = useState('Checkerboard');
     const [gridData, setGridData] = useState([]);
+    const [hoveredSeat, setHoveredSeat] = useState(null); // State to hold the details of the hovered seat
 
     const fetchGridData = async () => {
         try {
@@ -36,16 +38,24 @@ const GridDisplay = () => {
         setSelectedPattern(event.target.value);
     };
 
+    const handleSeatHover = (seat) => {
+        setHoveredSeat(seat);
+    };
+
+    const handleSeatLeave = () => {
+        setHoveredSeat(null);
+    };
+
     return (
-        <div>
-            <div>
+        <div className="grid-display-container"> {/* Apply a container class for styling */}
+            <div className="select-container"> {/* Apply styling to the select containers */}
                 <label htmlFor="hall">Select Hall:</label>
                 <select id="hall" value={selectedHall} onChange={handleHallChange}>
                     <option value="TLT">TLT</option>
                     <option value="FLT">FLT</option>
                 </select>
             </div>
-            <div>
+            <div className="select-container">
                 <label htmlFor="pattern">Select Pattern:</label>
                 <select id="pattern" value={selectedPattern} onChange={handlePatternChange}>
                     <option value="Checkerboard">Checkerboard</option>
@@ -53,17 +63,32 @@ const GridDisplay = () => {
                     <option value="TwoEmptySpaces">Two Empty Spaces</option>
                 </select>
             </div>
-            <div>
+            <div className="grid-container"> {/* Apply styling to the grid container */}
                 {gridData.map((row, rowIndex) => (
-                    <div key={rowIndex} style={{ display: 'flex' }}>
+                    <div key={rowIndex} className="row"> {/* Apply styling to each row */}
                         {row.map((seat, seatIndex) => (
-                            <div key={seatIndex} style={{ backgroundColor: seat.color, padding: '5px' }}>
+                            <div
+                                key={seatIndex}
+                                className="seat"
+                                style={{ backgroundColor: seat.color }}
+                                onMouseEnter={() => handleSeatHover(seat)}
+                                onMouseLeave={handleSeatLeave}
+                            >
                                 {seat.seat_number}
                             </div>
                         ))}
                     </div>
                 ))}
             </div>
+            {hoveredSeat && ( 
+                <div className="seat-popup">
+                    <img src={hoveredSeat.image} alt={hoveredSeat.seat_number} />
+                    <div>
+                        <p>Name: {hoveredSeat.name}</p>
+                        <p>Matric Number: {hoveredSeat.matric_number}</p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
