@@ -61,6 +61,7 @@ const GridDisplay = () => {
                     <option value="Checkerboard">Checkerboard</option>
                     <option value="Normal">Normal</option>
                     <option value="TwoEmptySpaces">Two Empty Spaces</option>
+                    <option value="Circular">Circular Hall representation</option>
                 </select>
             </div>
             <div className="grid-container"> {/* Apply styling to the grid container */}

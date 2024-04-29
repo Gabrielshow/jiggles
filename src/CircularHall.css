@@ -1,0 +1,40 @@
+.hall {
+    position: relative;
+    width: 500px; /* Adjust this value to change the width of the hall */
+    height: 500px; /* Adjust this value to change the height of the hall */
+    border-radius: 50%; /* Make the container circular */
+    background-color: #f2f2f2;
+    overflow: hidden;
+  }
+  
+  .row {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: 50% 50%;
+  }
+  
+  .seat {
+    position: absolute;
+    width: 20px; /* Adjust this value to change the size of the seats */
+    height: 20px; /* Adjust this value to change the size of the seats */
+    border-radius: 50%; /* Make the seats circular */
+    text-align: center;
+    line-height: 20px;
+  }
+  
+  /* Define different seat styles as needed */
+  .seat.available {
+    background-color: #ccc;
+  }
+  
+  /* Define different seat styles as needed */
+  .seat.occupied {
+    background-color: #ff0000;
+  }
+  
+  /* Define different seat styles as needed */
+  .seat.selected {
+    background-color: #00ff00;
+  }
+  
