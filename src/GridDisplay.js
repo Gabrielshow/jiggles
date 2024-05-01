@@ -20,6 +20,7 @@ const GridDisplay = () => {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
+            console.log(data);
             setGridData(data);
         } catch (error) {
             console.error('There was a problem with your fetch operation:', error);
