@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import './login.css';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-
-const login = () => {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +13,7 @@ const login = () => {
     // console.log('Password:', password);
     if (username === 'admin' && password === 'password') {
       // Redirect to admin component if authentication is successful
-      history.push('/admin');
+      navigate('/admin');
     } else {
       alert('Invalid username or password');
     }
@@ -57,4 +56,4 @@ const login = () => {
   );
 }
 
-export default login
+export default Login

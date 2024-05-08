@@ -17,15 +17,21 @@
   display: flex; /* Add */
   flex-direction: column; /* Add */
   align-items: center; /* Add */
+  transition: transform 0.3s ease; /* Add transition for rise effect */
+}
+
+.login-container:hover {
+  transform: translateY(-5px); /* Add rise effect on hover */
 }
 
 .login-container .logo {
-  margin-bottom: 20px; /* Add */
+  margin-bottom: 10px; /* Add */
 }
 
 .login-container h2 {
   text-align: center;
   color: #333;
+  margin-bottom: 20px; /* Add spacing below the h2 element */
 }
 
 .login-form {
@@ -44,11 +50,12 @@
 }
 
 .form-group input {
-  width: 100%;
+  width: calc(100% - 22px); /* Adjusted width to account for padding */
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
+  transition: border-color 0.3s ease; /* Add transition for border color */
 }
 
 .form-group input:focus {
@@ -64,6 +71,7 @@
   border-radius: 5px;
   cursor: pointer;
   outline: none;
+  transition: background-color 0.3s ease; /* Add transition for background color */
 }
 
 .btn-login:hover {
