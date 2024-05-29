@@ -9,7 +9,7 @@ const GridDisplay = () => {
 
     const fetchGridData = async () => {
         try {
-            const response = await fetch('http://localhost:5000/get_grid_data', {
+            const response = await fetch('https://frt-saa.onrender.com/get_grid_data', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
